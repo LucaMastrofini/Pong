@@ -1,15 +1,19 @@
 Game = Object:extend()
 
 function Game:new()
-    self.pad = Pad()
+    self.padLeft = Pad("up", "down")
+    self.padRight = Pad("w", "s")
+    self.padRight.x = love.graphics.getWidth() - 60
 end
 
 function Game:update(dt)
-    self.pad:update(dt)
+    self.padLeft:update(dt)
+    self.padRight:update(dt)
 end
 
 function Game:draw()
-    self.pad:draw()
+    self.padLeft:draw()
+    self.padRight:draw()
 end
 
 return Game
