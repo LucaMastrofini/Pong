@@ -20,4 +20,23 @@ function Entity:draw()
     love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
 end
 
+function Entity:collides(other)
+    return self.x < other.x + other.width and
+            self.x + self.width > other.x and
+            self.y < other.y + other.height and
+            self.y + self.height > other.y
+end
+
+function Entity:onCollision(other)
+    if other.x < self.x then -- check if I hit left or right
+        self.x = other.x + self.width --set ball on right edge
+    else
+        self.x = other.x - self.width --set ball on left edge
+    end
+    self.xSpeed = self.xSpeed * -1 --invert xSpeed
+
+end
+
+
+
 return Entity

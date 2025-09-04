@@ -11,6 +11,11 @@ function Game:update(dt)
     self.padLeft:update(dt)
     self.padRight:update(dt)
     self.ball:update(dt)
+    if self.ball:collides(self.padLeft) then  
+        self.ball:onCollision(self.padLeft)
+    elseif self.ball:collides(self.padRight) then
+        self.ball:onCollision(self.padRight)
+    end
 end
 
 function Game:draw()

@@ -28,6 +28,8 @@ function Ball:update(dt)
         self.xSpeed = -300
         self.ySpeed = math.random(-300, 300)
     end
+
+    
 end
 
 function Ball:draw()
