@@ -16,21 +16,19 @@ function Ball:update(dt)
         self.y = love.graphics.getHeight() - self.height
         self.ySpeed = -self.ySpeed
     end
-
-    if self.x <= 0 then 
-        self.x = love.graphics.getWidth()/2 - self.width/2
-        self.y = love.graphics.getHeight()/2 - self.height/2
-        self.xSpeed = 300
-        self.ySpeed = math.random(-300, 300)
-    elseif self.x + self.width >= love.graphics.getWidth() then
-         self.x = love.graphics.getWidth()/2 - self.width/2
-        self.y = love.graphics.getHeight()/2 - self.height/2
-        self.xSpeed = -300
-        self.ySpeed = math.random(-300, 300)
-    end
-
-    
+   
 end
+
+function Ball:getOutOfBounds()
+    if self.x + self.width <= 0 then
+        return "left"
+    elseif self.x  >= love.graphics.getWidth() then
+        return "right"
+    else
+        return false
+    end
+end    
+    
 
 function Ball:draw()
     Ball.super.draw(self)

@@ -5,6 +5,8 @@ function love.load()
     Ball = require "ball"
     Game = require "game"
     game = Game()
+    sounds = {}
+    sounds.blip = love.audio.newSource("sounds/blip.wav", "static")
 end
 
 function love.update(dt)

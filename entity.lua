@@ -30,10 +30,12 @@ end
 function Entity:onCollision(other)
     if other.x < self.x then -- check if I hit left or right
         self.x = other.x + self.width --set ball on right edge
+        love.audio.play(sounds.blip)
     else
         self.x = other.x - self.width --set ball on left edge
+        love.audio.play(sounds.blip)
     end
-    self.xSpeed = self.xSpeed * -1 --invert xSpeed
+    self.xSpeed = self.xSpeed * -1--invert xSpeed + increase speed by 5%
 
 end
 
